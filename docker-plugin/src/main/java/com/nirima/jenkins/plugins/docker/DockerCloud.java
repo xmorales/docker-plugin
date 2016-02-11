@@ -359,7 +359,7 @@ public class DockerCloud extends Cloud {
         }
     }
 
-    private DockerSlave provisionWithWait(DockerTemplate dockerTemplate) throws IOException, Descriptor.FormException {
+    private synchronized DockerSlave provisionWithWait(DockerTemplate dockerTemplate) throws IOException, Descriptor.FormException {
         pullImage(dockerTemplate);
 
         LOGGER.info("Trying to run container for {}", dockerTemplate.getDockerTemplateBase().getImage());
